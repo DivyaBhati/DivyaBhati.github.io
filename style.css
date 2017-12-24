@@ -6,7 +6,7 @@ body {
 	
 }
 
-.Nav {
+.Header {
 	color: #DEB841;
 	font-size: 2em;
 	font-family: arial;
@@ -31,7 +31,6 @@ body {
 	font-family: arial;
 	color: white;
 	border: 3px solid black;
-	border-radius: 3px;
 	background-color: #37323E;
 
 }
@@ -44,41 +43,51 @@ body {
 	background-color: #DEB841;
 }
 
-/* GRID STUFF */
-.grid {
+.navbar {
 	display: grid;
-	grid-template-columns: 1fr 2fr;
-	grid-template-rows: 1fr 3fr 2fr;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 40vw;
+    height: 3em;
+	grid-template-columns: repeat(5 , 1fr);
+	grid-template-rows: 1fr;
+	align-items: center;
+	border: 2px solid #DEB841;
+	border-bottom: none;
+	justify-content: center;
 }
 
-.grid > * {
-	padding: 20px;
-	text-align: center;
-	grid-row-gap: 1em;
+.navbar div:hover {
+	background-color: lightgrey;
 }
 
-.grid a {
-	display: block;
+.navbar div:nth-child(1) {
+	grid-area: 1 / 2 / 2 / 3;
 }
 
-.grid > a:hover {
-	background-color: rgba(255, 255, 255, 0.15);
-	text-decoration: none;
-	transition: background-color ease 0.5s;
+.navbar div:nth-child(2) {
+	grid-area: 1 / 3 / 2 / 4;
 }
 
-.grid div:nth-child(1) {
-	grid-area: 1 / 1 / 2 / 3;
+.navbar div:nth-child(3) {
+	grid-area: 1 / 4 / 2 / 5;
 }
 
-.grid div:nth-child(2) {
-	grid-area: 2 / 1 / 3 / 2;
+.logo {
+	width: 100%;
+	vertical-align: middle;
+	transition-duration: .5s;
+	height: auto;
 }
 
-.grid div:nth-child(3) {
-	grid-area: 2 / 2 / 3 / 3;
+.logo: a {
+	width: 100%;
+	height: auto;
 }
 
-.grid div:nth-child(4) {
-	grid-area: 3 / 1 / 4 / 3;
+.logo img {
+	width: 40%;
 }
