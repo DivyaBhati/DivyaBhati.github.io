@@ -7,6 +7,9 @@ body {
 	
 }
 
+
+
+/* THE 4 ELEMENTS OF THE MAIN GRID */
 .Header {
 	color: #DEB841;
 	font-size: 2em;
@@ -44,6 +47,8 @@ body {
 }
 
 
+
+/* THE NAVBAR */
 .navbar {
 	display: grid;
 	grid-template-columns: repeat(5 , 1fr);
@@ -68,26 +73,34 @@ body {
 	transition: ease 0.3s;
 }
 
+
+
+
+/* REORDERING OF THE DIVS */
 .navbar div:nth-child(1) {
-	grid-area: 1 / 2 / 2 / 3;
+	grid-area: 1 / 1 / 2 / 2;
 }
 
 .navbar div:nth-child(2) {
-	grid-area: 1 / 3 / 2 / 4;
+	grid-area: 1 / 2 / 2 / 3;
 }
 
 .navbar div:nth-child(3) {
-	grid-area: 1 / 4 / 2 / 5;
+	grid-area: 1 / 3 / 2 / 4;
 }
 
 .navbar div:nth-child(4) {
-	grid-area: 1 / 1 / 2 / 2;
+	grid-area: 1 / 4 / 2 / 5;
 }
 
 .navbar div:nth-child(5) {
 	grid-area: 1 / 5 / 2 / 6;
 }
 
+
+
+
+/* LOGO CENTERING AND SIZING */
 .logo {
 	width: 100%;
 	vertical-align: middle;
@@ -130,6 +143,9 @@ body {
 	transform: translate(-50%, 0%);
 }
 
+
+
+/* ADDING CUSTOM FONTS */
 @font-face {
 	font-family: "Kenyan Coffee";
 	src: url("Fonts/KenyanCoffee.ttf");
