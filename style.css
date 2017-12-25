@@ -55,7 +55,7 @@ body {
     left: 50%;
     transform: translate(-50%, 0%);
     width: 30em;
-    height: 3em;
+    height: 4em;
 
     background-color: #333;
 	border: 2px solid #DEB841;
@@ -63,8 +63,9 @@ body {
 }
 
 .navbar div:hover {
-	background-color: lightgrey;
-	transition-duration: .5s;
+	transform: scale(1.2);
+	filter: brightness(70%);
+	transition: ease 0.3s;
 }
 
 .navbar div:nth-child(1) {
@@ -79,6 +80,14 @@ body {
 	grid-area: 1 / 4 / 2 / 5;
 }
 
+.navbar div:nth-child(4) {
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+.navbar div:nth-child(5) {
+	grid-area: 1 / 5 / 2 / 6;
+}
+
 .logo {
 	width: 100%;
 	vertical-align: middle;
@@ -87,12 +96,38 @@ body {
 }
 
 .logo: a {
-	width: 100%;
-	height: auto;
+	width: auto;
+	height: stretch;
 }
 
 .logo img {
+	width: 45%;
+	height: stretch;
+	margin-left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.github img {
+	width: 80%;
+	height: stretch;
+	margin-left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.resume img {
+	filter: invert(100%);
 	width: 40%;
+	height: stretch;
+	margin-left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.email img {
+	filter: invert(100%);
+	width: 45%;
+	height: stretch;
+	margin-left: 50%;
+	transform: translate(-50%, 0%);
 }
 
 @font-face {
