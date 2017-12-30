@@ -1,49 +1,105 @@
 html {
-	background: linear-gradient(black, #BFBDC1);
-	font-family: 'Olds Sans Black';
+	font-family: 'open_sansregular';
 }
 
 body {
-	
+	background: #FFFFFF;
+	background-repeat: no-repeat;
+	margin: 0;
 }
 
-
-
-/* THE 4 ELEMENTS OF THE MAIN GRID */
+/* MAIN HEADER */
 .Header {
-	color: #DEB841;
-	font-size: 2em;
+	/*Actual bar*/
+	top: 0;
+	left: 0;
+	background-color: #000000;
+
+	/* Text */
+	color: #23B5D3;
+	font-size: 1.3em;
 	text-align: center;
 	font-weight: none;
-	background-color: #6D6A75;
-	padding: 1em;
-	border: 3px solid black;
-	border-radius: 3px;
-	text-shadow: 4px 4px #333333;
+	padding: 2em;
+	text-transform: uppercase;
+	letter-spacing: .1em;
 }
 
+/* COOL IMAGE */
 .Image {
-	background: url('https://4.bp.blogspot.com/-IU1BKZksI5U/VZNxlvRKAJI/AAAAAAAAEas/7bn_UfHPPoc/s320/dead%2Binside.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-	max-width: 100%;
-	max-height: 100%;
-	margin: 10px;
-	border: 2px solid white;
+    width: auto;
+    height: 350px;
+    overflow: hidden;
 }
 
-.Text {
-	font-size: 1.5em;
-	border: 2px solid #37323E;
-	margin: 10px;
-	background-color: #DEB841;
+.Image img {
+	margin-top: -21em;
+	width: 100%;
+    height: 100%;
 }
 
-.Info {
+#AboutHeading {
+	font-family: 'open_sansregular';
+	background-color: #C6C7C4;
+	color: black;
+	font-size: 1.3em;
+	text-align: center;
+	font-weight: none;
+	padding: 2em 0em 2em 0em;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}
+
+#AboutHeading:hover {
+	filter: brightness(110%);
+	transition: ease 0.3s;
+	transform: scale(1.05);
+}
+
+.funny {
+	font-size: .6em;
+	font-style: italic;
+	vertical-align: middle;
+}
+
+.About {
+	/* Box properties */
+	padding: 0em 3em 2em 3em /* top right bottom left */ ;
+	background-color: #C6C7C4;
+
+	/* Text properties */
+	color: black;
 	font-size: 2em;
-	color: white;
-	border: 3px solid black;
-	background-color: #37323E;
+	font-family: 'open_sanslight';
+}
+
+#ProjectHeading {
+	font-family: 'open_sansregular';
+	background-color: white;
+	color: black;
+	font-size: 1.3em;
+	text-align: center;
+	font-weight: none;
+	padding: 2em 0em 2em 0em;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}
+
+#ProjectHeading:hover {
+	filter: brightness(90%);
+	transition: ease 0.3s;
+	transform: scale(1.05);
+}
+
+.Projects {
+	/* Box properties */
+	padding: 0em 3em 5em 3em; /* top right bottom left */
+	background-color: white;
+
+	/* Text properties */
+	color: black;
+	font-size: 2em;
+	font-family: 'open_sanslight';
 }
 
 
@@ -63,7 +119,7 @@ body {
     height: 4em;
 
     background-color: #333;
-	border: 2px solid #DEB841;
+	border: 5px solid #23B5D3;
 	border-bottom: none;
 }
 
