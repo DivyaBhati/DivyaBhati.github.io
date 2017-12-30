@@ -29,9 +29,9 @@ body {
 /* COOL IMAGE */
 .Image {
 	width: auto;
-	height: 20vw;
+	height: 30vw;
    	overflow: hidden;
-	min-height: 100px;
+	min-height: 150px;
 }
 
 .Image img {
