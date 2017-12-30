@@ -6,6 +6,7 @@ body {
 	background: #FFFFFF;
 	background-repeat: no-repeat;
 	margin: 0;
+	max-width: 100em;
 }
 
 /* MAIN HEADER */
@@ -17,7 +18,7 @@ body {
 
 	/* Text */
 	color: #23B5D3;
-	font-size: 1.3em;
+	font-size: 2vw;
 	text-align: center;
 	font-weight: none;
 	padding: 2em;
@@ -28,21 +29,22 @@ body {
 /* COOL IMAGE */
 .Image {
     width: auto;
-    height: 350px;
+    height: 20vw;
     overflow: hidden;
 }
 
 .Image img {
-	margin-top: -21em;
-	width: 100%;
-    height: 100%;
+	padding-top: 0px;
+	transform: translate(0%, -30%);
+	max-width: 100%;
+    max-height: 100%;
 }
 
 #AboutHeading {
 	font-family: 'open_sansregular';
 	background-color: #C6C7C4;
 	color: black;
-	font-size: 1.3em;
+	font-size: 2vw;
 	text-align: center;
 	font-weight: none;
 	padding: 2em 0em 2em 0em;
@@ -69,7 +71,7 @@ body {
 
 	/* Text properties */
 	color: black;
-	font-size: 2em;
+	font-size: 2.5vw;
 	font-family: 'open_sanslight';
 }
 
@@ -77,7 +79,7 @@ body {
 	font-family: 'open_sansregular';
 	background-color: white;
 	color: black;
-	font-size: 1.3em;
+	font-size: 2vw;
 	text-align: center;
 	font-weight: none;
 	padding: 2em 0em 2em 0em;
@@ -98,7 +100,7 @@ body {
 
 	/* Text properties */
 	color: black;
-	font-size: 2em;
+	font-size: 2.5vw;
 	font-family: 'open_sanslight';
 }
 
