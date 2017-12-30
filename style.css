@@ -21,7 +21,7 @@ body {
 	font-size: 2vw;
 	text-align: center;
 	font-weight: none;
-	padding: 2em;
+	padding: 3.5vw;
 	text-transform: uppercase;
 	letter-spacing: .1em;
 }
@@ -47,7 +47,7 @@ body {
 	font-size: 2vw;
 	text-align: center;
 	font-weight: none;
-	padding: 2em 0em 2em 0em;
+	padding: 3.5vw 0em 3.5vw 0em;
 	text-transform: uppercase;
 	letter-spacing: .1em;
 }
@@ -66,7 +66,7 @@ body {
 
 .About {
 	/* Box properties */
-	padding: 0em 3em 2em 3em /* top right bottom left */ ;
+	padding: 0em 5vw 3vw 5vw /* top right bottom left */ ;
 	background-color: #C6C7C4;
 
 	/* Text properties */
@@ -82,7 +82,7 @@ body {
 	font-size: 2vw;
 	text-align: center;
 	font-weight: none;
-	padding: 2em 0em 2em 0em;
+	padding: 3.5vw 0em 3.5vw 0em;
 	text-transform: uppercase;
 	letter-spacing: .1em;
 }
@@ -95,7 +95,7 @@ body {
 
 .Projects {
 	/* Box properties */
-	padding: 0em 3em 5em 3em; /* top right bottom left */
+	padding: 0em 5vw 3vw 5vw; /* top right bottom left */
 	background-color: white;
 
 	/* Text properties */
@@ -117,8 +117,10 @@ body {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0%);
-    width: 30em;
-    height: 4em;
+    width: 60vw;
+    height: 12vw;
+    max-height: 80px;
+    max-width: 400px;
 
     background-color: #333;
 	border: 5px solid #23B5D3;
