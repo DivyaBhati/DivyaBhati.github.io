@@ -78,7 +78,7 @@ html {
 
 		/* Text properties */
 		color: black;
-		font-size: 2.5vw;
+		font-size: 2.1vw;
 		font-family: 'open_sanslight';
 	}
 
@@ -135,6 +135,7 @@ html {
 
 	.ProjectInfo {
 		font-size: 2vw;
+		padding-bottom: 3vw;
 	}
 
 
@@ -163,6 +164,18 @@ html {
 	}
 
 	#ATSImage img:hover {
+		transform: scale(1.05);
+		filter: brightness(120%);
+		transition: ease 0.3s;	
+	}
+
+	#PongImage img {
+		width: 25vw;
+		height: auto;
+		padding: 1vw 3vw 0vw 3vw;
+	}
+
+	#PongImage img:hover {
 		transform: scale(1.05);
 		filter: brightness(120%);
 		transition: ease 0.3s;	
@@ -369,6 +382,7 @@ html {
 
 	.ProjectInfo {
 		font-size: 4.5vw;
+		padding-bottom: 5vh;
 	}
 
 
@@ -391,6 +405,12 @@ html {
 	}
 
 	#ATSImage img {
+		width: 80vw;
+		height: auto;
+		padding: 3vw 5vw 8vw 3vw;
+	}
+
+	#PongImage img {
 		width: 80vw;
 		height: auto;
 		padding: 3vw 5vw 8vw 3vw;
