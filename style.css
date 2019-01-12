@@ -101,7 +101,7 @@ html {
 
 	.Projects {
 		/* Box properties */
-		padding: 0em 5vw 30vh 5vw; /* top right bottom left */
+		padding: 0em 5vw 10vh 5vw; /* top right bottom left */
 		background-color: white;
 
 		/* Text properties */
@@ -136,6 +136,7 @@ html {
 	.ProjectInfo {
 		font-size: 2vw;
 		padding-bottom: 3vw;
+		margin-bottom: 10vh;
 	}
 
 
@@ -347,7 +348,7 @@ html {
 
 	.Projects {
 		/* Box properties */
-		padding: 0em 5vw 30vh 5vw; /* top right bottom left */
+		padding: 0em 5vw 10vh 5vw; /* top right bottom left */
 		background-color: white;
 
 		/* Text properties */
@@ -383,6 +384,7 @@ html {
 	.ProjectInfo {
 		font-size: 4.5vw;
 		padding-bottom: 5vh;
+		margin-bottom: 5vh;
 	}
 
 
