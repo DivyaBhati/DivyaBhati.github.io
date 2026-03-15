@@ -166,7 +166,7 @@ ul { list-style: none; }
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 30%;
   border: 3px solid var(--border);
   margin-bottom: 0.5rem;
 }
@@ -259,11 +259,29 @@ ul { list-style: none; }
 /* ── About ─────────────────────────────────────────────────── */
 .about-content {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 680px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2.5rem;
+  max-width: 780px;
   color: var(--text-muted);
   font-size: 1.05rem;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.ivy-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 35%;
+  border: 3px solid var(--border);
+  margin-top: 0.5rem;
 }
 
 /* ── Cards ─────────────────────────────────────────────────── */
@@ -459,6 +477,10 @@ ul { list-style: none; }
   }
 
   .nav-link::after { display: none; }
+
+  .about-content {
+    flex-direction: column;
+  }
 
   .hero-ctas {
     flex-direction: column;
