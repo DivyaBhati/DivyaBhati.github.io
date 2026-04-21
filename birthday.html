@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ria's 27th! 🐾</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f7c5c5;
+    --rose: #e8758a;
+    --wine: #8b2252;
+    --cream: #fdf6ee;
+    --caramel: #c4864a;
+    --sage: #a8c5a0;
+    --gold: #d4a843;
+    --deep: #3a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(247,197,197,0.3) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(212,168,67,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(168,197,160,0.1) 0%, transparent 70%);
+  }
+
+  /* Floating background elements */
+  .bg-doodles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .doodle {
+    position: absolute;
+    opacity: 0.07;
+    font-size: 2.5rem;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+  }
+
+  /* Header */
+  header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .header-dog {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    animation: waggle 2s ease-in-out infinite;
+  }
+
+  @keyframes waggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--wine);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: var(--caramel);
+    margin-top: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem auto;
+    max-width: 400px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, var(--rose), transparent);
+  }
+
+  .divider span { font-size: 1.2rem; }
+
+  /* Itinerary */
+  .itinerary {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid var(--blush);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(139,34,82,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139,34,82,0.15);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.4rem;
+    background: linear-gradient(135deg, var(--blush) 0%, #fce8d8 100%);
+  }
+
+  .time-badge {
+    background: var(--wine);
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+
+  .card-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .card-hint {
+    font-size: 0.9rem;
+    color: var(--wine);
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .lock-icon {
+    font-size: 1.2rem;
+    color: var(--rose);
+    transition: transform 0.3s;
+  }
+
+  .card:hover .lock-icon {
+    transform: rotate(-15deg) scale(1.2);
+  }
+
+  /* Revealed state */
+  .card-body {
+    display: none;
+    padding: 1.2rem 1.4rem 1.4rem;
+    border-top: 2px dashed var(--blush);
+    animation: revealIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .card-body.visible {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @keyframes revealIn {
+    from { opacity: 0; transform: scale(0.9) translateY(-10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .activity-emoji {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .activity-text {
+    flex: 1;
+  }
+
+  .activity-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--deep);
+    font-weight: 700;
+  }
+
+  .activity-desc {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.2rem;
+    font-style: italic;
+  }
+
+  .check-badge {
+    background: var(--sage);
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  /* Custom Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(58, 26, 46, 0.6);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal {
+    background: white;
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(139,34,82,0.25);
+    animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    border: 3px solid var(--blush);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.8) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-dog {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    animation: waggle 1.5s ease-in-out infinite;
+  }
+
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--wine);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal p {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .modal p strong {
+    color: var(--rose);
+    font-weight: 700;
+  }
+
+  .modal input {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid var(--blush);
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--deep);
+    outline: none;
+    transition: border-color 0.2s;
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .modal input:focus {
+    border-color: var(--rose);
+    background: white;
+  }
+
+  .modal input.shake {
+    animation: shake 0.4s ease;
+    border-color: #e05;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+  }
+
+  .modal-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--rose), var(--wine));
+    color: white;
+  }
+
+  .btn-secondary {
+    background: var(--cream);
+    color: var(--wine);
+    border: 2px solid var(--blush);
+  }
+
+  .error-msg {
+    color: #e05;
+    font-size: 0.82rem;
+    margin-top: 0.6rem;
+    font-weight: 600;
+    min-height: 1.1em;
+    transition: opacity 0.2s;
+  }
+
+  /* Footer */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 1rem;
+    color: var(--rose);
+    font-size: 0.85rem;
+  }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+    z-index: 200;
+    pointer-events: none;
+  }
+
+  @keyframes confettiFall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-doodles" id="bgDoodles"></div>
+
+<header>
+  <span class="header-dog">🐾</span>
+  <h1>Ria's <em>27th</em> Birthday</h1>
+  <p class="subtitle">✨ A day just for you ✨</p>
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span>🍸</span>
+    <div class="divider-line"></div>
+  </div>
+  <p style="color:#a07080; font-size:0.9rem; font-weight:600;">Click each mystery card to unlock your plans 🔐</p>
+</header>
+
+<div class="itinerary" id="itinerary"></div>
+
+<footer>
+  made with 🐶 & 🍸 & lots of love
+</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+  <div class="modal" id="modal">
+    <span class="modal-dog" id="modalEmoji">🐶</span>
+    <h2 id="modalTitle">Secret Question!</h2>
+    <p id="modalQuestion"></p>
+    <input type="text" id="modalInput" placeholder="type your answer..." autocomplete="off" />
+    <div class="error-msg" id="errorMsg"></div>
+    <div class="modal-buttons">
+      <button class="btn btn-secondary" onclick="closeModal()">cancel</button>
+      <button class="btn btn-primary" onclick="checkAnswer()">unlock 🔓</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const activities = [
+  {
+    time: "9:00 AM",
+    icon: "🎁",
+    hint: "Morning surprise awaits...",
+    emoji: "🎀",
+    name: "Wake Up & Open Presents!",
+    desc: "Good morning!",
+    question: "When was our first date?",
+    answers: ["june 22"],
+    hint2: "Think back to the beginning 💕"
+  },
+  {
+    time: "10:45 AM",
+    icon: "🥐",
+    hint: "A small bite to hold us over...",
+    emoji: "🎀",
+    name: "Croissants at Mille Feuille",
+    desc: "Head to Washington Square Park",
+    question: "What technique do we use to run from alligators?",
+    answers: ["zig zag"],
+    hint2: "Every Floridian knows this 💕"
+  },
+  {
+    time: "11:00 AM",
+    icon: "☕",
+    hint: "Some morning caffeine...",
+    emoji: "☕",
+    name: "Coffee at ENLY",
+    desc: "Head towards Nolita and ask for the tiramisu latte",
+    question: "What's the tallest building in NYC?",
+    answers: ["freedom tower"],
+    hint2: "The real name though..."
+  },
+  {
+    time: "12:00 PM",
+    icon: "🍝",
+    hint: "A delicious lunch...",
+    emoji: "🫶",
+    name: "Lunch at L'Artusi",
+    desc: "Head to the West Village for lunch (hope you made room for arancini)!",
+    question: "What's the last name of your favorite basketball player?",
+    answers: ["bane"],
+    hint2: "Think 🦖 arms"
+  },
+  {
+    time: "2:00 PM",
+    icon: "🎨",
+    hint: "Let's get artsy...",
+    emoji: "🖼️",
+    name: "Paint & Pour",
+    desc: "Head to Bryant Park for relaxing art time!",
+    question: "What unit do sailors use to measure their speed?",
+    answers: ["knots"],
+    hint2: "Think back to when we were at the pier a long time ago ⛵"
+  },
+  {
+    time: "4:30 PM",
+    icon: "🍦",
+    hint: "A sweet ending...",
+    emoji: "🍨",
+    name: "Ice Cream at Sundaes Best",
+    desc: "Head to K-Town for some unique ice cream!",
+    question: "I love you forever and ever and ______?",
+    answers: ["always"],
+    hint2: "❤️"
+  }
+];
+
+let activeCardIndex = null;
+
+function buildCards() {
+  const container = document.getElementById('itinerary');
+  activities.forEach((act, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = `card-${i}`;
+    card.innerHTML = `
+      <div class="card-header" onclick="openModal(${i})">
+        <span class="time-badge">${act.time}</span>
+        <span class="card-icon">${act.icon}</span>
+        <span class="card-hint">${act.hint}</span>
+        <span class="lock-icon" id="lock-${i}">🔒</span>
+      </div>
+      <div class="card-body" id="body-${i}">
+        <span class="activity-emoji">${act.emoji}</span>
+        <div class="activity-text">
+          <div class="activity-name">${act.name}</div>
+          <div class="activity-desc">${act.desc}</div>
+        </div>
+        <div class="check-badge">✓</div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function openModal(index) {
+  const body = document.getElementById(`body-${index}`);
+  if (body.classList.contains('visible')) return; // already unlocked
+
+  activeCardIndex = index;
+  const act = activities[index];
+  document.getElementById('modalEmoji').textContent = act.icon;
+  document.getElementById('modalTitle').textContent = `🔐 Unlock ${act.time}`;
+  document.getElementById('modalQuestion').innerHTML = `<strong>${act.question}</strong><br><span style="font-size:0.82rem;color:#bbb;">${act.hint2}</span>`;
+  document.getElementById('modalInput').value = '';
+  document.getElementById('errorMsg').textContent = '';
+  document.getElementById('modalOverlay').style.display = 'flex';
+  setTimeout(() => document.getElementById('modalInput').focus(), 300);
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
+  activeCardIndex = null;
+}
+
+function checkAnswer() {
+  if (activeCardIndex === null) return;
+  const act = activities[activeCardIndex];
+  const input = document.getElementById('modalInput');
+  const val = input.value.trim().toLowerCase();
+  const correct = act.answers.some(a => a.toLowerCase() === val);
+
+  if (correct) {
+    const idx = activeCardIndex;
+    closeModal();
+    revealCard(idx);
+    launchConfetti();
+  } else {
+    input.classList.remove('shake');
+    void input.offsetWidth; // reflow
+    input.classList.add('shake');
+    document.getElementById('errorMsg').textContent = '🐶 Woof! Try again, cutie!';
+    setTimeout(() => input.classList.remove('shake'), 400);
+  }
+}
+
+function revealCard(index) {
+  const body = document.getElementById(`body-${index}`);
+  const lock = document.getElementById(`lock-${index}`);
+  body.classList.add('visible');
+  lock.textContent = '🔓';
+}
+
+document.getElementById('modalInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkAnswer();
+});
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+function launchConfetti() {
+  const colors = ['#f7c5c5','#e8758a','#8b2252','#d4a843','#a8c5a0','#ffffff'];
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.width = (Math.random() * 8 + 6) + 'px';
+    el.style.height = (Math.random() * 8 + 6) + 'px';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    el.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+    el.style.animationDelay = (Math.random() * 0.5) + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3500);
+  }
+}
+
+// Background doodles
+function buildBgDoodles() {
+  const emojis = ['🐶','🍸','🎀','🌸','🐾','✨','🍷','💕','🎁','🌷'];
+  const container = document.getElementById('bgDoodles');
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    el.className = 'doodle';
+    el.textContent = emojis[i % emojis.length];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.top = Math.random() * 100 + '%';
+    el.style.animationDelay = (Math.random() * 6) + 's';
+    el.style.animationDuration = (Math.random() * 4 + 5) + 's';
+    el.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+    container.appendChild(el);
+  }
+}
+
+buildBgDoodles();
+buildCards();
+</script>
+</body>
+</html>
